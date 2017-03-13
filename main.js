@@ -1,10 +1,10 @@
 $(document).ready(function() {
   loadNotes();
+
   $("#remove-all").click(removeNotes);
   $("#add-note").click(function(){
     addNote();
   })
-  $("textarea").blur(saveNotes);
 });
 
 /**
@@ -18,16 +18,14 @@ function addNote(text) {
   var removeButton = $("<i class = 'fa fa-times' aria-hidden = 'true'></i>");
   var textBox = $("<textarea></textarea>");
 
-  if (text != undefined) {
-    textBox.val(text);
-  }
+  if (text != undefined) textBox.val(text);
 
+  tag.click(changeColor);
+  textBox.blur(saveNotes);
   removeButton.click(function() {
     newNote.remove();
     saveNotes();
   });
-
-  tag.click(changeColor);
 
   icons.append(tag);
   icons.append(removeButton);
